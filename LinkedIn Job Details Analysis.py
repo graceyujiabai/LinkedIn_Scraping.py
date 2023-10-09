@@ -74,7 +74,6 @@ final_data['text_all'] = final_data[final_data.columns[0:]].astype(str).agg(' '.
 
 stop=None
 
-#---------------------------------------------------------------------------------------------------------------------------------------
 # Combine all lists and do text cleaning: delete punctuation, stopwords, weird symbols, remove spacing, & transform
 # everything into lower case tasks: extract bigrams. create wordclouds. single word frequency. additional tasks:
 # group by company name; group by location (state); compare between DS and DA and BI and BA; analyze trends.
@@ -84,13 +83,14 @@ stop=None
 # # must set(stopwords.words("english") to be able to loop through stopwords
 stop_list = set(stopwords.words("english"))
 
+
 def remove_punct(text):
     text = ''.join([word.lower() for word in text if word not in string.punctuation])
     text = re.sub('[0–9]+', '', text)
     text = text.join([word for word in text if word not in stop_list])
     return text
 
-# not familiar enough with string and list operations
+
 final_data_all = final_data['text_all'].apply(lambda x: remove_punct(x))
 
 print(final_data_all)
