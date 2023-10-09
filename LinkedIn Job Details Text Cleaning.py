@@ -85,8 +85,9 @@ stop_list = set(stopwords.words("english"))
 
 
 def remove_punct(text):
-    text = ''.join([word.lower() for word in text if word not in string.punctuation])
-    text = re.sub('[0–9]+', '', text)
+    text = ''.join([word.lower() for word in text]) # make everything lowercase
+    text = re.sub('\W+', ' ', text) # remove all special characters, spacing, and punctuation
+    # text = re.sub('[^A-Za-z0-9]+', ' ', text)
     text = text.join([word for word in text if word not in stop_list])
     return text
 
