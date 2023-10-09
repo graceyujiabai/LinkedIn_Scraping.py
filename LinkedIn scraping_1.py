@@ -61,7 +61,7 @@ for page_num in range(15):
         last_height = new_height
 
     # NOTE: find_element() will only give you the 1st element
-    # use find_elements() to loop through multiple job posts
+    # use find_elements() to loop through a list of elements
     job_details = driver.find_elements(By.XPATH, '//*[@id="job-details"]')
     data = []
     for j in range(len(job_details)):
